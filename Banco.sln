@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Usuario", "Banco\Usuario.csproj", "{7AC54148-AC11-437E-BCF1-5593968D6EFE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DBA11ACD-47CC-42D3-B858-84AD547CE0D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{A96CBCC0-10A4-4DD1-9E64-27023DA42D41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AC54148-AC11-437E-BCF1-5593968D6EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC54148-AC11-437E-BCF1-5593968D6EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC54148-AC11-437E-BCF1-5593968D6EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC54148-AC11-437E-BCF1-5593968D6EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA11ACD-47CC-42D3-B858-84AD547CE0D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA11ACD-47CC-42D3-B858-84AD547CE0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA11ACD-47CC-42D3-B858-84AD547CE0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA11ACD-47CC-42D3-B858-84AD547CE0D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A96CBCC0-10A4-4DD1-9E64-27023DA42D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A96CBCC0-10A4-4DD1-9E64-27023DA42D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A96CBCC0-10A4-4DD1-9E64-27023DA42D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A96CBCC0-10A4-4DD1-9E64-27023DA42D41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {549049F2-B925-44E0-BD32-800CC0FE4DD3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,56 @@
+networks:
+  specific-network-name:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    name: microservicesnet
+services:
+  sqldata:
+    container_name: app-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Pass@word
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+    - published: 1433
+      target: 1433
+  usuario:
+    build:
+      context: C:\Users\javier.ramirezangulo\source\repos\Banco
+      dockerfile: Banco/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Usuario
+      target: base
+    container_name: banco-usuario
+    depends_on:
+      sqldata:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: usuario:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/Usuario.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 8001
+      target: 80
+    - target: 80
+    - target: 443
+    tty: true
+    volumes:
+    - C:\Users\javier.ramirezangulo\source\repos\Banco\Banco:/app:rw
+    - C:\Users\javier.ramirezangulo\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\javier.ramirezangulo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\javier.ramirezangulo\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\javier.ramirezangulo\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\javier.ramirezangulo\source\repos\Banco:/src:rw
+version: '3.4'

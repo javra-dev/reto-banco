@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  sqldata:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+        - 1433:1433
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=Pass@word
+  usuario:
+    container_name: banco-usuario
+    image: ${DOCKER_REGISTRY-}usuario
+    build:
+      context: .
+      dockerfile: Banco/Dockerfile
+    ports:
+        - 8001:80
+    depends_on:
+        - sqldata
+
+  #movimiento:
+  #  container_name: banco-movimiento
+  #  image: ${DOCKER_REGISTRY-}movimiento
+  #  build:
+  #    context: .
+  #    dockerfile: Movimiento/Dockerfile
+  #  depends_on:
+        #- sqldata
+networks:
+ specific-network-name:
+  name: microservicesnet
+  driver: bridge
+  driver_opts:
+    com.docker.network.enable_ipv6: "true"
